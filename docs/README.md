@@ -3,7 +3,7 @@
 
 # Synjq介绍                                          
 ## 前言
-此文档包含了Synjq数据闪送用户操作相关的说明,包括产品的基本功能介绍，支持的数据上下游节点的类型,数据节点,链路,管理等相关内容的配置。</br>
+此文档包含了Synjq数据闪送用户操作相关的说明,包括产品的基本功能介绍，支持的数据上下游节点的类型,数据节点,链路,管理等相关内容的配置，此外Synjq是一款</br>跨平台</br>完全容器化</br>高易用</br>高容错</br>高拓展</br>高一致性</br>同时支持多源异构的数据库同步高效产品。</br>
 ### 产品注意事项
 
 <table style="background-color: #f2f2f2;" >
@@ -50,6 +50,14 @@
 4. Synjq-daemon.tar
 5. Docker-compose.yaml
 
+### 产品支持的上下游节点
+>Synjq支持的上游节点信息：
+
+![](https://image-1302181629.cos.ap-beijing.myqcloud.com/synjq--%E4%B8%8A%E6%B8%B8%E8%8A%82%E7%82%B9.png)
+
+>Synjq支持的下游节点信息：
+
+![](https://image-1302181629.cos.ap-beijing.myqcloud.com/synjq--%E4%B8%8B%E6%B8%B8%E8%8A%82%E7%82%B9.png)
 # Synjq开始部署
 ## 上传导入镜像
 synjq的部署流程基于docker-compose构建，能够实现严格意义上的[一键部署]
@@ -295,4 +303,68 @@ set binlog_rows_query_log_events=on;</br>
 show global variables where variable_name = 'binlog_row_value_options';</br>
 <hr style="border: 2px solid grey;">
 
+## SqlServer源端配置
+>为指定的数据库开启CDC
 
+USE MyDB</br>
+GO</br>
+EXEC sys.sp_cdc_enable_db</br>
+GO</br>
+
+>为指定表开启 CDC
+
+USE MyDB </br>
+GO</br>
+EXEC sys.sp_cdc_enable_table</br>
+@source_schema = N'dbo',</br>
+@source_name   = N'MyTable',</br>
+@role_name     = N'MyRole',  </br>
+@filegroup_name = N'MyDB_CT',</br>
+@supports_net_changes = 0</br>
+GO</br>
+
+<hr style="border: 2px solid grey;">
+
+# Synjq运维操作
+
+>对于运维人员的常规运维操作
+
+1. 怎么启动和关闭synjq容器？</br>
+
+```javascript {.line-numbers}
+首先Synjq产品是使用docker-compose.yaml文件一键启停的，不需要一个个的停止关闭容器
+
+#：docker-compose down 关闭所有容器  
+#：docker-compose up -d 启动所有Synjq相关的容器
+```
+2. 怎么查看日志信息? </br>
+
+```javascript {.line-numbers}
+查看日志的方法有两种：
+       1.可以进入taskmanager容器进行查看
+       2.直接在web界面上查看
+
+#： docker exec -it synjq-taskmanager-1 /bin/bash 
+#:  cd log查看后缀为log的日志信息
+```
+
+3. Web数据节点和链路配置
+
+>添加数据节点信息
+
+![](https://image-1302181629.cos.ap-beijing.myqcloud.com/synjq--%E6%B7%BB%E5%8A%A0%E8%8A%82%E7%82%B9.png)
+
+>填写节点的ip，端口等相关信息
+
+![](https://image-1302181629.cos.ap-beijing.myqcloud.com/synjq-%E8%8A%82%E7%82%B9%E4%BF%A1%E6%81%AF.png)
+
+>配置链路
+
+![](https://image-1302181629.cos.ap-beijing.myqcloud.com/synjq-%E6%B7%BB%E5%8A%A0%E9%93%BE%E8%B7%AF.png)
+
+>填加链路信息，填写完保存启动链路即可
+
+![](https://image-1302181629.cos.ap-beijing.myqcloud.com/synjq--%E9%93%BE%E8%B7%AF%E4%BF%A1%E6%81%AF.png)
+
+
+以上配置为通用配置，个别数据库需要填写其他参数，请联系九桥工程师进程配置！
