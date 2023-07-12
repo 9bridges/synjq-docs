@@ -11,4 +11,5 @@
     - [管理用户设置](guide/settings/user)
 - [产品运维指南](maintenance)
 - [产品常见问题](faq)
-- [产品更新日志](changelog)
+- 产品更新日志
+  - [v1.7 版本说明](changelog/1.7)

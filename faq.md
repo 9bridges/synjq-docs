@@ -1,9 +1,11 @@
-# Synjq常见问题 </br>
->常见问题解决方法，仅供参考，具体报错请根据实际情况分析！
+# 常见问题
+
+系统配置过程中与运行过程中的常见问题分析与解释。
+
 <table>
 <tr>
-<th>PROBLEM</th>
-<th>SOLVE</th>
+<th>问题</th>
+<th>解决方案</th>
 </tr>
 <tr>
 <td>dm.jdbc.driver.DMEXception: ERROR in line: 1 flashback function is disable(达梦闪回功能禁用)</td>
