@@ -1,9 +1,14 @@
-- [产品概览](prerequisite)
+- 使用准备
   - [支持的数据源端](prerequisite/source)
     - [源端的配置要求](prerequisite/source/config)
   - [支持的数据目标端](prerequisite/sink)
   - [推荐环境配置](prerequisite/env)
-- [产品手册](guide)
+- 产品手册
+  - [管理数据节点](guide/datanode)
+  - [管理数据链路](guide/datalink)
+  - 管理系统设置
+    - [管理告警策略](guide/settings/alert)
+    - [管理用户设置](guide/settings/user)
 - [产品运维指南](maintenance)
 - [产品常见问题](faq)
 - [产品更新日志](changelog)
