@@ -11,4 +11,8 @@
     - [管理用户设置](guide/settings/user)
 - [产品运维指南](maintenance)
 - [产品常见问题](faq)
-- [产品更新日志](changelog)
+- 产品更新日志
+  - [Core 更新日志](changelog/core)
+  - [Web 更新日志](changelog/web)
+  - [Query 更新日志](changelog/query)
+  - [Daemon 更新日志](changelog/daemon)
